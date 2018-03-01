@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8"></meta>
+	<link rel="shortcut icon" href="res/icon/favicon.ico">
+	<title >Works</title>
+	<script src="js/jquery.js"></script>
+    <script src="js/scroll.js"></script>
+	<link href="css/shiny.css" rel="stylesheet" type="text/css">
+    <link href="css/template2.css" rel="stylesheet" type="text/css">
+	<body>
+		<div>
+			<header id="header">
+				<div id="title">
+					<span onclick="location.href='index.html'">Divik</span>
+					<img id="menu-icon" align="right" src="res/icon/menu.png"></img>
+					<div id="menu">
+						<div onclick="location.href='index.html'">Home</div>
+						<div onclick="location.href='works.html'">Works</div>
+						<div onclick="location.href='index.html'">About Me</div>
+						<div onclick="location.href='feedback.html'">Feedback</div>
+						<div onclick="location.href='hacktype.html'">Hacktype</div>
+					</div>
+				</div>
+			</header>
+		</div>
+		<video playsinline autoplay muted loop>
+			<source src="res/video/bg.mp4" type="video/mp4">
+		</video>
+		<div id="content">
+			<h1 align="center">Works</h1>
+            <hr width="50%">
+            <p align="center">My works on Games and Game mods</p>
+        </div>
+
+			  	<div class='card' id="pic1" >
+				<div class='shine' ></div>
+				<img  height="120%" align="right" src="res/picture/uvm 1.png" onclick="window.scrollTo(0, 1000);"></img>
+			  </div>
+
+			<div class='card' id="pic2">
+				<div class='shine'></div>
+					<img height="120%" align="right" src="res/picture/instrument craft 3.png" onclick=" window.scrollTo(0, 1700);"></img>
+			</div>
+
+		<div class='card' id="pic3">
+			<div class='shine'></div>
+			<img height="120%" align="right" src="res/picture/magic_tower.png" onclick=" window.scrollTo(0, 2650); "></img>
+		</div>
+
+
+		<script>
+		$('#pic1').mousemove(function(event)
+		{
+		var x = event.pageX - $('#pic1').offset().left;
+		var y = event.pageY - $('#pic1').offset().top;
+		rotation1(x,y);
+		});
+		$('#pic2').mousemove(function(event)
+		{
+			var x = event.pageX - $('#pic2').offset().left;
+			var y = event.pageY - $('#pic2').offset().top;
+			rotation2(x,y);
+		});
+		$('#pic3').mousemove(function(event)
+		{
+			var x = event.pageX - $('#pic3').offset().left;
+			var y = event.pageY - $('#pic3').offset().top;
+			rotation3(x,y);
+		});
+	 function rotation1(x,y)
+	 {
+		 var $temp=$('#pic1');
+		 degreeY=((y-400)/1000)*60;
+		 degreeX=((x-800)/1900)*45;
+		 $temp.css({ '-moz-transform': 'rotateY(' + degreeX + 'deg) rotateX(' + -1*degreeY + 'deg)'});
+	 	 $temp.css({'-webkit-transform':'rotateY(' + degreeX + 'deg) rotateX(' + -1*degreeY + 'deg)'}); //rotate horizenional
+	 }
+	 function rotation2(x,y)
+	 {
+		 var $temp=$('#pic2');
+		 degreeY=((y-400)/1000)*60;
+		 degreeX=((x-800)/1900)*45;
+		 $temp.css({ '-moz-transform': 'rotateY(' + degreeX + 'deg) rotateX(' + -1*degreeY + 'deg)'});
+	   $temp.css({'-webkit-transform':'rotateY(' + degreeX + 'deg) rotateX(' + -1*degreeY + 'deg)'}); //rotate horizenional
+	 }
+	 function rotation3(x,y)
+	 {
+		 var $temp=$('#pic3');
+		 degreeY=((y-400)/1000)*60;
+		 degreeX=((x-800)/1900)*45;
+		 $temp.css({ '-moz-transform': 'rotateY(' + degreeX + 'deg) rotateX(' + -1*degreeY + 'deg)'});
+	 	 $temp.css({'-webkit-transform':'rotateY(' + degreeX + 'deg) rotateX(' + -1*degreeY + 'deg)'}); //rotate horizenional
+	 }
+
+		</script>
+
+		<br>
+		<h1 align="center">Starbound Mods</h1>
+
+		<div class="banner" align="center">
+					<img src="res/picture/uvm 1.png" style="object-fit: cover; width:100%; height:40%"></img>
+				<br>
+				<p>Make life easier</p>
+				<h2>UVM</h2>
+				<p> Cras aliquet urna ut sapien tincidunt, quis malesuada eda.</p>
+					<button onclick="location.href='http://steamcommunity.com/sharedfiles/filedetails/?id=1138173873'" class="button" style="vertical-align:middle">
+						<span>More Details</span>
+					</button>
+		</div>
+		<br>
+		<div class="content" align="center">
+			<img src="res/picture/instrument craft 1.png" height="10%" style=" width:100%; height:10%"></img>
+				<br>
+				<p>Craft Instrument at Ease</p>
+				<h2>Instrument Craft</h2>
+				<p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit famalesuada.</p>
+					<button onclick="location.href='http://steamcommunity.com/sharedfiles/filedetails/?id=963960008'" class="button" style="vertical-align:middle"><span>More Details</span></button>
+		</div>
+		<h1 align="center">Remade Games</h1>
+		<div class="content" align="center">
+					<img src="res/picture/magic_tower.png" style="object-fit: cover; width:100%; height:40%"></img>
+				<h2>Tower of Sorcerer</h2>
+				<p> Cras aliquet urna ut sapien tincidunt, quis maleuada.</p>
+					<button onclick="location.href='https://github.com/Darkborderman/Magic_Tower'" class="button" style="vertical-align:middle">
+						<span>More Details</span>
+					</button>
+		</div>
+		<div align="center">
+			<h1>Others</h1>
+				<h2 onclick="location.href='https://github.com/Darkborderman/Fake-Emblem'">Fake Emblem -Remade Games</h2>
+				<h2 onclick="location.href='https://www.nexusmods.com/skyrim/mods/81861/?'">Get More Arrow- Skyrim Mod</h2>
+				<h2>Judges</h2>
+					<h3 onclick="location.href='https://github.com/Darkborderman/Online-judge/tree/POJ'">POJ</h3>
+					<h3 onclick="location.href='https://github.com/Darkborderman/Online-judge/tree/UVa'">UVa</h3>
+					<h3 onclick="location.href='https://github.com/Darkborderman/Online-judge/tree/ZOJ'">ZOJ</h3>
+		</div>
+	</div>
+		<footer id="footer">
+		    <div align="center">
+                <img src="res/icon/home.png"></img>
+			    <img src="res/icon/home.png"></img>
+			    <img src="res/icon/facebook.png" onclick="location.href='https://www.facebook.com/profile.php?id=100004856164587&ref=bookmarks'"></img>
+			    <img src="res/icon/github.png" onclick="location.href='https://github.com/Darkborderman'"></img>
+			    <img src="res/icon/mail.png" onclick="location.href='feedback.html'"></img>
+		        <p onclick="window.scrollTo(0,0)">Back to top</p>
+	       </div>
+        </footer>
+	</body>
+</html>

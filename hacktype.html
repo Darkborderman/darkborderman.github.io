@@ -2,7 +2,7 @@
 <html>
     <meta charset="UTF-8"></meta>
     <link rel="shortcut icon" href="res/icon/favicon.ico">
-    <title >Divik's Resume</title>
+    <title >Feedback</title>
     <script src="js/jquery.js"></script>
     <script src="js/scroll.js"></script>
     <link href="css/template2.css" rel="stylesheet" type="text/css">
@@ -26,9 +26,30 @@
 		    <source src="res/video/bg.mp4" type="video/mp4">
 	    </video>
         <div id="content">
-            <h1 align="center">Divik</h1>
+            <h1 align="center">Hacktype</h1>
             <hr width="50%">
+                <div id="form" align="center">
+                    <p>It will show code when you type any letter</p>
+                    <br>
+                    <div align="left" id="show"></div>
+                </div>
         </div>
+        <script>
+        var t_place=0;
+		$( document ).keydown(
+			function ( event ) {
+            $.ajax({
+                dataType:'html',
+                url:'hacktype.php',
+                data:{place:t_place},
+                success:function(data){
+                    $('#show').append(data);
+                }
+            })
+            t_place=t_place+1;
+			}
+		);
+        </script>
         <footer id="footer">
 		    <div align="center">
                 <img src="res/icon/home.png"></img>
@@ -39,5 +60,12 @@
 		        <p onclick="window.scrollTo(0,0)">Back to top</p>
 	       </div>
         </footer>
-    </body>
+    </b0ody>
 </html>
+<style>
+#show
+{
+    font-size: 20px;
+    padding-left:25%;
+}
+</style>
