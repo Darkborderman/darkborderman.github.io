@@ -9,6 +9,7 @@ body
     color:#FFFFFF;
     margin: 0px;
     padding: 0px;
+    min-height: 100vh;
 }
 .fixed{position: fixed;}
 
@@ -32,12 +33,12 @@ header
 {
     width:100%;
     height:50px;
-    background-color:#000000;
+    background-color:#252525;
     border-style: solid;
     border-color: #666666;
     border-width: 0px 0px 2px 0px;
     z-index: 25565;
-    position: absolute;
+    position: fixed;
     text-align:left;
     top:0px;
 }
@@ -59,7 +60,7 @@ header
     height:70%;
     width:20%;
     right: 0%;
-    background-color:#000000;
+    background-color:#252525;
     border-style: solid;
     border-color: #666666;
     border-width: 2px 0px 2px 2px;
@@ -90,14 +91,16 @@ header
 #footer
 {
     border-style:solid;
+    margin: 00px;
+    padding: 0px;
     border-width:2px 0px 0px 0px;
     border-color:#666666;
-    background: #000000;
+    background: #252525;
     position: absolute;
     width:100%;
-    height:120px;
-    bottom:auto;
-    z-index: 25565;
+    height:150px;
+    clear:both;
+    bottom:-200px;
 }
 #footer div img
 {
