@@ -96,7 +96,7 @@ header
     border-width:2px 0px 0px 0px;
     border-color:#666666;
     background: #252525;
-    position: absolute;
+    position: relative;
     width:100%;
     height:150px;
     clear:both;
