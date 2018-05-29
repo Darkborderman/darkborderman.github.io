@@ -2,7 +2,7 @@
 layout: post
 title:  "My First Jekyll Post"
 date:   2018-05-29 13:01:27 +0800
-categories: milestone
+tags: milestone
 ---
 :fireworks::fireworks::fireworks:
 
