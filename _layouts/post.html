@@ -19,10 +19,10 @@ layout: default
     {{ content }}
   </div>
 
+  {%- include tagCloud.html -%}
   {%- if site.disqus.shortname -%}
     {%- include disqus_comments.html -%}
   {%- endif -%}
-  {%- include tagCloud.html -%}
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
