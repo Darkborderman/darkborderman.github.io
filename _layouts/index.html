@@ -4,19 +4,19 @@ layout: default
 
 <div class="home">
 
-  {{ content }}
+    {{ content }}
 
-  {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">Current Post</h2>
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-          {%- include postUnit.html -%}
-      </li>
-      {%- endfor -%}
-    </ul>
+    {%- if site.posts.size > 0 -%}
+        <h2 class="post-list-heading">Current Post</h2>
+        <ul class="post-list">
+            {%- for post in site.posts -%}
+            <li>
+                {%- include postUnit.html -%}
+            </li>
+            {%- endfor -%}
+        </ul>
 
-  {%- endif -%}
-  {%- include tagCloud.html -%}
+    {%- endif -%}
+    {%- include tagCloud.html -%}
 
 </div>
