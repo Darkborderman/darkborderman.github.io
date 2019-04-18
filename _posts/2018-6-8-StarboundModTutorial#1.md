@@ -2,7 +2,7 @@
 layout: post
 title:  "Starbound mod tutorial #1"
 subtitle: "mod create tutorial"
-date:   2018-06-8 21:34:00 +0800
+date:   2018-06-08 21:34:00 +0800
 tags: mod game
 ---
 
