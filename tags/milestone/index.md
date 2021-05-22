@@ -1,4 +1,0 @@
----
-layout: tagList
-sortTag: "milestone"
----
