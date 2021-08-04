@@ -27,7 +27,7 @@ copyright:
 # Sidebar
 sidebar: left
 widgets:
-- category
+# - category
 - tag
 # - tagcloud
 - archive
@@ -48,7 +48,7 @@ recent_posts_limits: 5
 google_analytics:
 gauges_analytics:
 favicon: /assets/favicon.png
-twitter:
+twitter: https://twitter.com/darkborderman
 fb_admins:
 fb_app_id:
 
