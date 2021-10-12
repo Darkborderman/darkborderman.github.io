@@ -23,6 +23,19 @@
       <% } %>
     </div>
     <footer class="article-footer">
+      <script src="https://giscus.app/client.js"
+        data-repo="darkborderman/darkborderman.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTg3MDk5NzI="
+        data-category="Show and tell"
+        data-category-id="DIC_kwDOBxNe1M4B_ftZ"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        crossorigin="anonymous"
+        async
+      >
+      </script>
       <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><%= __('share') %></a>
       <% if (post.comments && config.disqus_shortname){ %>
         <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
