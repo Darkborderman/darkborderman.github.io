@@ -6,3 +6,9 @@
 * npm 9.3.1
 
 ## Developing
+
+### Run hexo
+
+```
+./node_modules/.bin/hexo
+```
