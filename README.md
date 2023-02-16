@@ -10,5 +10,5 @@
 ### Run hexo
 
 ```
-./node_modules/.bin/hexo
+npm run hexo
 ```
