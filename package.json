@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "hexo": "hexo",
+    "create": "hexo new $(date +%Y%m%d)-post",
     "build": "hexo generate",
     "clean": "hexo clean",
-    "deploy": "hexo deploy",
     "server": "hexo server"
   },
   "hexo": {
