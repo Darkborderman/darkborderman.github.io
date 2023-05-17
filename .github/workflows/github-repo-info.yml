@@ -3,7 +3,7 @@ name: Update Github repository information
 on:
   push:
     branches:
-      - master
+      - develop
 
 jobs:
   build:
