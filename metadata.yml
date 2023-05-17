@@ -1,0 +1,11 @@
+github:
+  description: My blog on Github.
+  enable_discussions: false
+  enable_issues: false
+  enable_projects: false
+  enable_wiki: false
+  homepage: https://darkborderman.github.io
+  template: false
+  topics:
+    - blog
+    - learning
