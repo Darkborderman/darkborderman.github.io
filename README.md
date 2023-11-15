@@ -1,5 +1,7 @@
 # Darkborderman.github.io
 
+My blog on Github.
+
 ## Prerequisitive
 
 * Node 20.5.0
@@ -7,8 +9,9 @@
 
 ## Developing
 
-### Run hexo
-
-```
-npm run hexo
-```
+* Create a new post
+  * `npm run create`
+* Build static file resources
+  * `npm run build`
+* Run server
+  * `npm run server`
