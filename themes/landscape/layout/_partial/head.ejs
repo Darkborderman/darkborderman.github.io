@@ -1,5 +1,6 @@
 <head>
   <meta charset="utf-8">
+  <meta name="description" content=" <% if (page.title){ %><%= page.title %> | <% } %><%= config.title %> " />
   <%- partial('google-analytics') %>
   <%
   var title = page.title;
@@ -30,7 +31,7 @@
     <%- favicon_tag(theme.favicon) %>
   <% } %>
   <% if (config.highlight.enable){ %>
-    <%- css('https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css') %>
+    <%- css('highlight/typeface-source-code-pro.min.css') %>
   <% } %>
   <%- css('css/style') %>
   <% if (theme.fancybox){ %>
