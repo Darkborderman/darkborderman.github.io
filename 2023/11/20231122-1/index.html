@@ -4,16 +4,23 @@
   <meta charset="utf-8">
   
   
-  <title>Darkborderman 的開發筆記</title>
+  <title>Godot 的繼承場景 | Darkborderman 的開發筆記</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Darkborderman 的開發筆記">
-<meta property="og:url" content="http://darkborderman.github.io/index.html">
+  <meta name="description" content="繼承場景介紹在 Godot 4 中，你可以建立一個繼承場景，繼承場景能夠繼承基礎場景的子節點及屬性。 繼承場景具有與基礎場景相同的節點架構，繼承的子節點可以個別修改。當基礎場景改變時，這些變化會反應到繼承場景中。 使用繼承場景可以在 UI 中重複使用相同的元件，而不需個別編輯每個元件。例如自定義樣式的按鈕，可將外框樣式作為基礎場景，建立繼承場景繼承外框樣式，繼承場景可以個別編輯按鈕文字。當需要更改">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Godot 的繼承場景">
+<meta property="og:url" content="http://darkborderman.github.io/2023/11/20231122-1/index.html">
 <meta property="og:site_name" content="Darkborderman 的開發筆記">
+<meta property="og:description" content="繼承場景介紹在 Godot 4 中，你可以建立一個繼承場景，繼承場景能夠繼承基礎場景的子節點及屬性。 繼承場景具有與基礎場景相同的節點架構，繼承的子節點可以個別修改。當基礎場景改變時，這些變化會反應到繼承場景中。 使用繼承場景可以在 UI 中重複使用相同的元件，而不需個別編輯每個元件。例如自定義樣式的按鈕，可將外框樣式作為基礎場景，建立繼承場景繼承外框樣式，繼承場景可以個別編輯按鈕文字。當需要更改">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://darkborderman.github.io/assets/20231112-1-1.png">
+<meta property="og:image" content="http://darkborderman.github.io/assets/20231112-1-2.png">
+<meta property="article:published_time" content="2023-11-22T03:06:35.000Z">
+<meta property="article:modified_time" content="2023-11-22T02:38:50.250Z">
 <meta property="article:author" content="Darkborderman">
-<meta property="article:tag" content="Backend, Game modding">
+<meta property="article:tag" content="godot">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://darkborderman.github.io/assets/20231112-1-1.png">
 <meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;darkborderman">
   
   
@@ -71,9 +78,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-20231122-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-20231122-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/11/20231122-1/" class="article-date">
   <time class="dt-published" datetime="2023-11-22T03:06:35.000Z" itemprop="datePublished">2023-11-22</time>
@@ -86,8 +91,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/11/20231122-1/">Godot 的繼承場景</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Godot 的繼承場景
     </h1>
   
 
@@ -115,43 +120,19 @@
     <!-- <footer class="article-footer"></footer> -->
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
   
-    <article id="post-Intro" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/08/Intro/" class="article-date">
-  <time class="dt-published" datetime="2021-08-06T04:46:39.000Z" itemprop="datePublished">2021-08-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/Intro/">網站介紹</a>
-    </h1>
+    <a href="/2021/08/Intro/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">網站介紹</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>這裡主要放一些開發時常用到的tips, 相關文章, 以及曾經踩過的地雷</p>
-
-      
-    </div>
-    <!-- <footer class="article-footer"></footer> -->
-  </div>
   
 </article>
-
-  
-
-
 </section>
         
           <aside id="sidebar">
