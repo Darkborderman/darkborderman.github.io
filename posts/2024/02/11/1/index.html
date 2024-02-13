@@ -2,26 +2,23 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content=" Godot 的繼承場景 | Darkborderman 的開發筆記 " />
+  <meta name="description" content=" 搬移 terraform resource 的方式 | Darkborderman 的開發筆記 " />
   
   
-  <title>Godot 的繼承場景 | Darkborderman 的開發筆記</title>
+  <title>搬移 terraform resource 的方式 | Darkborderman 的開發筆記</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="繼承場景介紹在 Godot 4 中，你可以建立一個繼承場景，繼承場景能夠繼承基礎場景的子節點及屬性。 繼承場景具有與基礎場景相同的節點架構，繼承的子節點可以個別修改。當基礎場景改變時，這些變化會反應到繼承場景中。 使用繼承場景可以在 UI 中重複使用相同的元件，而不需個別編輯每個元件。例如自定義樣式的按鈕，可將外框樣式作為基礎場景，建立繼承場景繼承外框樣式，繼承場景可以個別編輯按鈕文字。當需要更改">
+  <meta name="description" content="工作時有時會需要搬移 terraform 資源, 紀錄下使用用法作為未來參考  使用 terraform state mv 搬移可以用在 resource 及 module 上 123terraform state mv aws_instance.one aws_instance.another # resource 搬移(重命名)terraform state mv module.one mod">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Godot 的繼承場景">
-<meta property="og:url" content="http://darkborderman.github.io/posts/2023/11/22/1/index.html">
+<meta property="og:title" content="搬移 terraform resource 的方式">
+<meta property="og:url" content="http://darkborderman.github.io/posts/2024/02/11/1/index.html">
 <meta property="og:site_name" content="Darkborderman 的開發筆記">
-<meta property="og:description" content="繼承場景介紹在 Godot 4 中，你可以建立一個繼承場景，繼承場景能夠繼承基礎場景的子節點及屬性。 繼承場景具有與基礎場景相同的節點架構，繼承的子節點可以個別修改。當基礎場景改變時，這些變化會反應到繼承場景中。 使用繼承場景可以在 UI 中重複使用相同的元件，而不需個別編輯每個元件。例如自定義樣式的按鈕，可將外框樣式作為基礎場景，建立繼承場景繼承外框樣式，繼承場景可以個別編輯按鈕文字。當需要更改">
+<meta property="og:description" content="工作時有時會需要搬移 terraform 資源, 紀錄下使用用法作為未來參考  使用 terraform state mv 搬移可以用在 resource 及 module 上 123terraform state mv aws_instance.one aws_instance.another # resource 搬移(重命名)terraform state mv module.one mod">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://darkborderman.github.io/posts/2023/11/22/1/1.png">
-<meta property="og:image" content="http://darkborderman.github.io/posts/2023/11/22/1/2.png">
-<meta property="article:published_time" content="2023-11-22T03:06:35.000Z">
+<meta property="article:published_time" content="2024-02-11T09:40:50.000Z">
 <meta property="article:modified_time" content="2024-02-13T02:09:10.650Z">
 <meta property="article:author" content="Darkborderman">
-<meta property="article:tag" content="Godot">
+<meta property="article:tag" content="terraform">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://darkborderman.github.io/posts/2023/11/22/1/1.png">
 <meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;darkborderman">
   
   
@@ -79,10 +76,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-2023/11/22/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-2024/02/11/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/posts/2023/11/22/1/" class="article-date">
-  <time class="dt-published" datetime="2023-11-22T03:06:35.000Z" itemprop="datePublished">2023-11-22</time>
+    <a href="/posts/2024/02/11/1/" class="article-date">
+  <time class="dt-published" datetime="2024-02-11T09:40:50.000Z" itemprop="datePublished">2024-02-11</time>
 </a>
     
   </div>
@@ -93,7 +90,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Godot 的繼承場景
+      搬移 terraform resource 的方式
     </h1>
   
 
@@ -101,19 +98,18 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="繼承場景介紹"><a href="#繼承場景介紹" class="headerlink" title="繼承場景介紹"></a>繼承場景介紹</h1><p>在 Godot 4 中，你可以建立一個繼承場景，繼承場景能夠繼承基礎場景的子節點及屬性。</p>
-<p>繼承場景具有與基礎場景相同的節點架構，繼承的子節點可以個別修改。當基礎場景改變時，這些變化會反應到繼承場景中。</p>
-<p>使用繼承場景可以在 UI 中重複使用相同的元件，而不需個別編輯每個元件。例如自定義樣式的按鈕，可將外框樣式作為基礎場景，建立繼承場景繼承外框樣式，繼承場景可以個別編輯按鈕文字。當需要更改外框風格時，只需修改基礎場景，繼承場景即可套用，無需個別修改每個使用此風格的場景。</p>
-<h1 id="建立繼承場景"><a href="#建立繼承場景" class="headerlink" title="建立繼承場景"></a>建立繼承場景</h1><ol>
-<li><p>在列表選擇建立新的繼承場景<br><img src="/posts/2023/11/22/1/1.png" alt="建立新的繼承場景"></p>
-</li>
-<li><p>選擇基礎場景</p>
-</li>
-<li><p>儲存場景時會建立新檔案(即繼承場景)</p>
-</li>
-</ol>
+        <p>工作時有時會需要搬移 terraform 資源, 紀錄下使用用法作為未來參考</p>
 <ul>
-<li>繼承場景的節點會呈現黃色<br><img src="/posts/2023/11/22/1/2.png" alt="繼承場景的節點會呈現黃色"></li>
+<li><p>使用 terraform state mv 搬移<br>可以用在 resource 及 module 上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">terraform state <span class="built_in">mv</span> aws_instance.one aws_instance.another <span class="comment"># resource 搬移(重命名)</span></span><br><span class="line">terraform state <span class="built_in">mv</span> module.one module.another <span class="comment"># module 搬移(重命名)</span></span><br><span class="line">terraform state <span class="built_in">mv</span> aws_instance.one module.another.instance <span class="comment"># resource 搬移至 module 內</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 terraform moved 語法搬移<br>可以用在 resource 及 module 上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">moved &#123;</span><br><span class="line">  from = aws_instance.one</span><br><span class="line">  to   = aws_instance.another</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Module 的搬移方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">moved &#123;</span><br><span class="line">  from = module.one</span><br><span class="line">  to   = module.another</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手動進行 terraform state 操作<br>可以用在 resource, 也可用於不同資料夾下搬移 resource<br>可以用於舊有資源時的 IaC</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">terraform state <span class="built_in">rm</span> aws_instance.one  <span class="comment"># 從 state 移除舊 resource</span></span><br><span class="line">terraform import aws_instance.another i-a1234567 <span class="comment"># 匯入機器到指定 resource</span></span><br><span class="line">terraform import module.one.another i-a1234567 <span class="comment"># 匯入機器到指定 module 的 resource</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -124,19 +120,10 @@
     
 <nav id="article-nav">
   
-    <a href="/posts/2024/02/11/1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          搬移 terraform resource 的方式
-        
-      </div>
-    </a>
   
-  
-    <a href="/posts/2021/08/06/Intro/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/posts/2023/11/22/1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">網站介紹</div>
+      <div class="article-nav-title">Godot 的繼承場景</div>
     </a>
   
 </nav>
