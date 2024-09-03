@@ -230,6 +230,41 @@
 </article>
 
   
+    <article id="post-2024/01/04/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/posts/2024/01/04/1/" class="article-date">
+  <time class="dt-published" datetime="2024-01-04T00:00:00.000Z" itemprop="datePublished">2024-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/posts/2024/01/04/1/">使用 terraform timestamp 進行 lambda 佈署更新</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 AWS Lambda 中用 serverless 以外套件需額外處理將 lambda file 壓縮使用<br>可使用 terraform 中 timestamp 及 local-exec 執行 shell script 將這些行為作成步驟自動化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">locals &#123;</span><br><span class="line">  ts = &quot;$&#123;timestamp()&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">resource &quot;null_resource&quot; &quot;example_prepare&quot; &#123;</span><br><span class="line">  provisioner &quot;local-exec&quot; &#123;</span><br><span class="line">    command = &lt;&lt;EOT</span><br><span class="line">      cd ../../../lambda/example &amp;&amp;</span><br><span class="line">      zip -r $&#123;local.ts&#125;_lambda.zip *.py</span><br><span class="line">      mv $&#123;local.ts&#125;_lambda.zip ../../terraform/lambda/$&#123;local.ts&#125;_lambda.zip</span><br><span class="line">    EOT</span><br><span class="line">  &#125;</span><br><span class="line">  triggers = &#123; always_run = local.ts &#125;  # Make sure it always trigger</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">resource &quot;aws_lambda_function&quot; &quot;example&quot; &#123;</span><br><span class="line">  function_name    = &quot;example&quot;</span><br><span class="line">  handler          = &quot;example.handler&quot;</span><br><span class="line">  filename         = &quot;$&#123;local.ts&#125;_lambda.zip&quot;</span><br><span class="line">  role             = &quot;arn:aws:iam::123456789:role/lambda-role&quot;</span><br><span class="line">  runtime          = &quot;python3.11&quot;</span><br><span class="line">  description      = &quot;Example Lambda function&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在每次執行 <code>terraform apply</code> 時, 會由 <code>ts = &quot;$&#123;timestamp()&#125;&quot;</code> 產生每次不同的 zip 檔名<br>因檔案名稱不同, 故每次都可以觸發部屬 AWS Lambda</p>
+
+      
+    </div>
+    <!-- <footer class="article-footer"></footer> -->
+  </div>
+  
+</article>
+
+  
     <article id="post-2023/11/22/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/posts/2023/11/22/1/" class="article-date">
@@ -398,7 +433,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
     </div>
   </div>
 
@@ -423,11 +458,11 @@
           </li>
         
           <li>
-            <a href="/posts/2023/11/22/1/">Godot 的繼承場景</a>
+            <a href="/posts/2024/01/04/1/">使用 terraform timestamp 進行 lambda 佈署更新</a>
           </li>
         
           <li>
-            <a href="/posts/2021/08/06/Intro/">網站介紹</a>
+            <a href="/posts/2023/11/22/1/">Godot 的繼承場景</a>
           </li>
         
       </ul>
