@@ -2,22 +2,18 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content=" 使用 terraform timestamp 進行 lambda 佈署更新 | Darkborderman 的開發筆記 " />
+  <meta name="description" content=" Darkborderman 的開發筆記 " />
   
   
-  <title>使用 terraform timestamp 進行 lambda 佈署更新 | Darkborderman 的開發筆記</title>
+  <title>Archives: 2023/9 | Darkborderman 的開發筆記</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="在 AWS Lambda 中用 serverless 以外套件需額外處理將 lambda file 壓縮使用可使用 terraform 中 timestamp 及 local-exec 執行 shell script 將這些行為作成步驟自動化 1234567891011121314151617181920212223locals &#123;  ts &#x3D; &quot;$&#123;timestam">
-<meta property="og:type" content="article">
-<meta property="og:title" content="使用 terraform timestamp 進行 lambda 佈署更新">
-<meta property="og:url" content="http://darkborderman.github.io/posts/2024/01/04/1/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Darkborderman 的開發筆記">
+<meta property="og:url" content="http://darkborderman.github.io/archives/2023/09/index.html">
 <meta property="og:site_name" content="Darkborderman 的開發筆記">
-<meta property="og:description" content="在 AWS Lambda 中用 serverless 以外套件需額外處理將 lambda file 壓縮使用可使用 terraform 中 timestamp 及 local-exec 執行 shell script 將這些行為作成步驟自動化 1234567891011121314151617181920212223locals &#123;  ts &#x3D; &quot;$&#123;timestam">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-01-04T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-12T15:59:04.481Z">
 <meta property="article:author" content="Darkborderman">
-<meta property="article:tag" content="fragment">
+<meta property="article:tag" content="Backend, Game modding">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;darkborderman">
   
@@ -76,60 +72,41 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-2024/01/04/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/posts/2024/01/04/1/" class="article-date">
-  <time class="dt-published" datetime="2024-01-04T00:00:00.000Z" itemprop="datePublished">2024-01-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      使用 terraform timestamp 進行 lambda 佈署更新
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/posts/2023/09/19/1/" class="archive-article-date">
+  <time class="dt-published" datetime="2023-09-19T00:00:00.000Z" itemprop="datePublished">Sep 19</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/posts/2023/09/19/1/">Man page 視覺化工具</a>
     </h1>
   
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在 AWS Lambda 中用 serverless 以外套件需額外處理將 lambda file 壓縮使用<br>可使用 terraform 中 timestamp 及 local-exec 執行 shell script 將這些行為作成步驟自動化</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">locals &#123;</span><br><span class="line">  ts = &quot;$&#123;timestamp()&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">resource &quot;null_resource&quot; &quot;example_prepare&quot; &#123;</span><br><span class="line">  provisioner &quot;local-exec&quot; &#123;</span><br><span class="line">    command = &lt;&lt;EOT</span><br><span class="line">      cd ../../../lambda/example &amp;&amp;</span><br><span class="line">      zip -r $&#123;local.ts&#125;_lambda.zip *.py</span><br><span class="line">      mv $&#123;local.ts&#125;_lambda.zip ../../terraform/lambda/$&#123;local.ts&#125;_lambda.zip</span><br><span class="line">    EOT</span><br><span class="line">  &#125;</span><br><span class="line">  triggers = &#123; always_run = local.ts &#125;  # Make sure it always trigger</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">resource &quot;aws_lambda_function&quot; &quot;example&quot; &#123;</span><br><span class="line">  function_name    = &quot;example&quot;</span><br><span class="line">  handler          = &quot;example.handler&quot;</span><br><span class="line">  filename         = &quot;$&#123;local.ts&#125;_lambda.zip&quot;</span><br><span class="line">  role             = &quot;arn:aws:iam::123456789:role/lambda-role&quot;</span><br><span class="line">  runtime          = &quot;python3.11&quot;</span><br><span class="line">  description      = &quot;Example Lambda function&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在每次執行 <code>terraform apply</code> 時, 會由 <code>ts = &quot;$&#123;timestamp()&#125;&quot;</code> 產生每次不同的 zip 檔名<br>因檔案名稱不同, 故每次都可以觸發部屬 AWS Lambda</p>
-
-      
-    </div>
-    <!-- <footer class="article-footer"></footer> -->
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/posts/2024/02/11/1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          搬移 terraform resource 的方式
-        
-      </div>
-    </a>
-  
-  
-    <a href="/posts/2023/12/20/1/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">AWS EC2 Ubuntu AMI 查詢</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
+
 </section>
         
           <aside id="sidebar">
