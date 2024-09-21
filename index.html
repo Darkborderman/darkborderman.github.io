@@ -74,6 +74,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2024/05/20/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/posts/2024/05/20/1/" class="article-date">
+  <time class="dt-published" datetime="2024-05-20T00:00:00.000Z" itemprop="datePublished">2024-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/posts/2024/05/20/1/">cpulimit 介紹使用方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>cpulimit 可以用於限制特定 process 的 CPU 使用率，避免影響系統的整體效能。</p>
+<p>安裝 cpulimit (以 Ubuntu 22.04 LTS 為例)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install cpulimit</span><br></pre></td></tr></table></figure>
+
+<p>基本用法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cpulimit -l &#123;value&#125; -p &#123;PID&#125;</span><br></pre></td></tr></table></figure>
+<p>參數說明：<br>-l 指定 CPU 使用率的上限，範圍從 1 到 100。<br>-p ：指定要限制的進程的 PID（進程識別碼）。</p>
+<p>cpulimit 預設只會對主 process 做限制, 若有 fork process 要記得加上 <code>-m</code> 參數</p>
+
+      
+    </div>
+    <!-- <footer class="article-footer"></footer> -->
+  </div>
+  
+</article>
+
+  
     <article id="post-2024/04/27/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/posts/2024/04/27/1/" class="article-date">
@@ -459,78 +498,12 @@
 </article>
 
   
-    <article id="post-2020/12/01/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/posts/2020/12/01/1/" class="article-date">
-  <time class="dt-published" datetime="2020-12-01T00:00:00.000Z" itemprop="datePublished">2020-12-01</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/posts/2020/12/01/1/">Stellaris 在地化翻譯須注意的地方</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Stellaris 在進行在地化翻譯時, 會遇到因為格式不符等問題導致翻不出來<br>除此之外, 也可以利用特殊語法, 讓 mod 看起來更人性化<br>這裡列出以下須注意的地方, 也供自己參考</p>
-<h3 id="檔案及編碼"><a href="#檔案及編碼" class="headerlink" title="檔案及編碼"></a>檔案及編碼</h3><ul>
-<li>資料夾結構必須是 <code>&lt;mod資料夾&gt;/localisation/&lt;語系ID&gt;</code>, 否則無法讀取</li>
-<li>檔名必須是 <code>_l_&lt;語系ID&gt;.yml</code> 結尾, 置於相對應語系 ID 資料夾, 否則無法讀取</li>
-<li>檔案型態必須是 <code>UTF-8 BOM</code>, 否則無法讀取</li>
-</ul>
-<h3 id="檔案結構"><a href="#檔案結構" class="headerlink" title="檔案結構"></a>檔案結構</h3><ul>
-<li>檔案會是一個 yaml 檔, 範例是:<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">l_&lt;語系ID&gt;:</span></span><br><span class="line"> <span class="attr">localisation_key_1:</span> <span class="string">&quot;Text String 1&quot;</span></span><br><span class="line"> <span class="attr">localisation_key_2:</span> <span class="string">&quot;Text String 2&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>key 是有大小寫之分的</li>
-<li>語系 key 可能會與 mod 內 ID 不同, 遊戲內物件會將其附上前綴, 語系 key 必須包含前綴</li>
-<li><ul>
-<li>如恆星基地建築會在 ID 前附上 <code>sb_</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h3><ul>
-<li>可以使用 <code>§</code> 將文字上色, 用 <code>§!</code>做結尾, 如 <code>&quot;§R測試§!&quot;</code> 會將<code>測試</code>上為紅色</li>
-<li><ul>
-<li>切記需要 <code>§!</code> 作為結尾, 否則顏色會汙染到後續描述顯示</li>
-</ul>
-</li>
-<li>可以使用 <code>£</code> 顯示特殊圖示, 如 <code>£minerals£</code> 可以顯示礦物圖示</li>
-<li>可以使用 <code>$</code> 將變數或文字做代換</li>
-<li><ul>
-<li>如 <code>$consumer_goods$</code> 可以使用遊戲原生已翻譯的文字, 而不用每個語系針對其做翻譯或文字更新</li>
-</ul>
-</li>
-</ul>
-<h3 id="其餘方便的除錯指令"><a href="#其餘方便的除錯指令" class="headerlink" title="其餘方便的除錯指令"></a>其餘方便的除錯指令</h3><p>刷新字詞表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reload text</span><br></pre></td></tr></table></figure>
-
-<p>切換語系(如中文)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">switchlanguage l_simp_chinese</span><br></pre></td></tr></table></figure>
-
-<p>顯示在地化前的字串 ID</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">toggle_string_id</span><br></pre></td></tr></table></figure>
-
-<h3 id="參見"><a href="#參見" class="headerlink" title="參見"></a>參見</h3><ul>
-<li>Stellaris Wiki: <a target="_blank" rel="noopener" href="https://stellaris.paradoxwikis.com/Localisation_modding">https://stellaris.paradoxwikis.com/Localisation_modding</a></li>
-</ul>
-
-      
-    </div>
-    <!-- <footer class="article-footer"></footer> -->
-  </div>
-  
-</article>
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -550,7 +523,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
     </div>
   </div>
 
@@ -561,6 +534,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/posts/2024/05/20/1/">cpulimit 介紹使用方法</a>
+          </li>
         
           <li>
             <a href="/posts/2024/04/27/1/">鋼鐵雄心早戰國家通用打法</a>
@@ -576,10 +553,6 @@
         
           <li>
             <a href="/posts/2024/01/04/1/">使用 terraform timestamp 進行 lambda 佈署更新</a>
-          </li>
-        
-          <li>
-            <a href="/posts/2023/12/20/1/">AWS EC2 Ubuntu AMI 查詢</a>
           </li>
         
       </ul>

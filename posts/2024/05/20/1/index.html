@@ -2,18 +2,22 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content=" Darkborderman 的開發筆記 " />
+  <meta name="description" content=" cpulimit 介紹使用方法 | Darkborderman 的開發筆記 " />
   
   
-  <title>Archives: 2020/12 | Darkborderman 的開發筆記</title>
+  <title>cpulimit 介紹使用方法 | Darkborderman 的開發筆記</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Darkborderman 的開發筆記">
-<meta property="og:url" content="http://darkborderman.github.io/archives/2020/12/index.html">
+  <meta name="description" content="cpulimit 可以用於限制特定 process 的 CPU 使用率，避免影響系統的整體效能。 安裝 cpulimit (以 Ubuntu 22.04 LTS 為例) 1sudo apt-get install cpulimit  基本用法 1cpulimit -l &#123;value&#125; -p &#123;PID&#125; 參數說明：-l 指定 CPU 使用率的上限，範圍從 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cpulimit 介紹使用方法">
+<meta property="og:url" content="http://darkborderman.github.io/posts/2024/05/20/1/index.html">
 <meta property="og:site_name" content="Darkborderman 的開發筆記">
+<meta property="og:description" content="cpulimit 可以用於限制特定 process 的 CPU 使用率，避免影響系統的整體效能。 安裝 cpulimit (以 Ubuntu 22.04 LTS 為例) 1sudo apt-get install cpulimit  基本用法 1cpulimit -l &#123;value&#125; -p &#123;PID&#125; 參數說明：-l 指定 CPU 使用率的上限，範圍從 1">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-20T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-21T15:57:46.255Z">
 <meta property="article:author" content="Darkborderman">
-<meta property="article:tag" content="Backend, Game modding">
+<meta property="article:tag" content="fragment">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;darkborderman">
   
@@ -72,41 +76,55 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/posts/2020/12/01/1/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-12-01T00:00:00.000Z" itemprop="datePublished">Dec 1</time>
+        <section id="main"><article id="post-2024/05/20/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/posts/2024/05/20/1/" class="article-date">
+  <time class="dt-published" datetime="2024-05-20T00:00:00.000Z" itemprop="datePublished">2024-05-20</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/posts/2020/12/01/1/">Stellaris 在地化翻譯須注意的地方</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      cpulimit 介紹使用方法
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>cpulimit 可以用於限制特定 process 的 CPU 使用率，避免影響系統的整體效能。</p>
+<p>安裝 cpulimit (以 Ubuntu 22.04 LTS 為例)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install cpulimit</span><br></pre></td></tr></table></figure>
+
+<p>基本用法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cpulimit -l &#123;value&#125; -p &#123;PID&#125;</span><br></pre></td></tr></table></figure>
+<p>參數說明：<br>-l 指定 CPU 使用率的上限，範圍從 1 到 100。<br>-p ：指定要限制的進程的 PID（進程識別碼）。</p>
+<p>cpulimit 預設只會對主 process 做限制, 若有 fork process 要記得加上 <code>-m</code> 參數</p>
+
+      
+    </div>
+    <!-- <footer class="article-footer"></footer> -->
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/posts/2024/04/27/1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">鋼鐵雄心早戰國家通用打法</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
-
-
 </section>
         
           <aside id="sidebar">
