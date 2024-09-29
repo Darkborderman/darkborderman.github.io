@@ -2,22 +2,18 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content=" Cloudwatch Log metric aggregation | Darkborderman 的開發筆記 " />
+  <meta name="description" content=" Darkborderman 的開發筆記 " />
   
   
-  <title>Cloudwatch Log metric aggregation | Darkborderman 的開發筆記</title>
+  <title>Archives: 2023/8 | Darkborderman 的開發筆記</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Cloudwatch metric 在以分鐘或小時搜尋較長資料區間時(如三或六個月)會發現資料並不會顯示 主因是 Cloudwatch metric 會將資料做彙總, 提供較粗的粒度查詢資料仍然存在, 但不提供較細粒度的資料查詢 Cloudwatch 規則:  資料粒度低於 60 秒, 可以查詢 3 小時內範圍 資料為 60 秒, 可以查詢 15 天內範圍 資料為 300 秒, 可以查詢 63 天">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Cloudwatch Log metric aggregation">
-<meta property="og:url" content="http://darkborderman.github.io/posts/2024/03/05/1/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Darkborderman 的開發筆記">
+<meta property="og:url" content="http://darkborderman.github.io/archives/2023/08/index.html">
 <meta property="og:site_name" content="Darkborderman 的開發筆記">
-<meta property="og:description" content="Cloudwatch metric 在以分鐘或小時搜尋較長資料區間時(如三或六個月)會發現資料並不會顯示 主因是 Cloudwatch metric 會將資料做彙總, 提供較粗的粒度查詢資料仍然存在, 但不提供較細粒度的資料查詢 Cloudwatch 規則:  資料粒度低於 60 秒, 可以查詢 3 小時內範圍 資料為 60 秒, 可以查詢 15 天內範圍 資料為 300 秒, 可以查詢 63 天">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-03-05T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-29T12:02:58.134Z">
 <meta property="article:author" content="Darkborderman">
-<meta property="article:tag" content="fragment">
+<meta property="article:tag" content="Backend, Game modding">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;darkborderman">
   
@@ -76,66 +72,41 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-2024/03/05/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/posts/2024/03/05/1/" class="article-date">
-  <time class="dt-published" datetime="2024-03-05T00:00:00.000Z" itemprop="datePublished">2024-03-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      Cloudwatch Log metric aggregation
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/posts/2023/08/06/1/" class="archive-article-date">
+  <time class="dt-published" datetime="2023-08-06T00:00:00.000Z" itemprop="datePublished">Aug 6</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/posts/2023/08/06/1/">Ubuntu 列出 process 正在使用的 port</a>
     </h1>
   
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Cloudwatch metric 在以分鐘或小時搜尋較長資料區間時(如三或六個月)會發現資料並不會顯示</p>
-<p>主因是 Cloudwatch metric 會將資料做彙總, 提供較粗的粒度查詢<br>資料仍然存在, 但不提供較細粒度的資料查詢</p>
-<p>Cloudwatch 規則:</p>
-<ul>
-<li>資料粒度低於 60 秒, 可以查詢 3 小時內範圍</li>
-<li>資料為 60 秒, 可以查詢 15 天內範圍</li>
-<li>資料為 300 秒, 可以查詢 63 天內範圍</li>
-<li>資料為 3600 秒, 可以查詢 455 天內範圍</li>
-</ul>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html</a></p>
-
-      
-    </div>
-    <!-- <footer class="article-footer"></footer> -->
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/posts/2024/04/27/1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          鋼鐵雄心早戰國家通用打法
-        
-      </div>
-    </a>
-  
-  
-    <a href="/posts/2024/02/11/1/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">搬移 terraform resource 的方式</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
+
 </section>
         
           <aside id="sidebar">
