@@ -2,18 +2,22 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content=" Darkborderman 的開發筆記 " />
+  <meta name="description" content=" Ubuntu 使用 logrotate 定時移除 log | Darkborderman 的開發筆記 " />
   
   
-  <title>Tag: terraform | Darkborderman 的開發筆記</title>
+  <title>Ubuntu 使用 logrotate 定時移除 log | Darkborderman 的開發筆記</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Darkborderman 的開發筆記">
-<meta property="og:url" content="http://darkborderman.github.io/tags/terraform/index.html">
+  <meta name="description" content="安裝 logrotate 1sudo apt-get install logrotate  建立 logrotate config, 如 example.conf 12345678910&#x2F;var&#x2F;log&#x2F;app&#x2F;*.log &#123;  # 針對符合格式的文件操作  daily  # 每日輪替  rotate 1  # 保留最近的 1 個文件  missingok  # 如果文件不存在則忽略">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 使用 logrotate 定時移除 log">
+<meta property="og:url" content="http://darkborderman.github.io/posts/2023/07/14/1/index.html">
 <meta property="og:site_name" content="Darkborderman 的開發筆記">
+<meta property="og:description" content="安裝 logrotate 1sudo apt-get install logrotate  建立 logrotate config, 如 example.conf 12345678910&#x2F;var&#x2F;log&#x2F;app&#x2F;*.log &#123;  # 針對符合格式的文件操作  daily  # 每日輪替  rotate 1  # 保留最近的 1 個文件  missingok  # 如果文件不存在則忽略">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-14T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-06T13:31:19.270Z">
 <meta property="article:author" content="Darkborderman">
-<meta property="article:tag" content="Backend, Game modding">
+<meta property="article:tag" content="fragment">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;darkborderman">
   
@@ -72,41 +76,71 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/posts/2024/02/11/1/" class="archive-article-date">
-  <time class="dt-published" datetime="2024-02-11T00:00:00.000Z" itemprop="datePublished">Feb 11</time>
+        <section id="main"><article id="post-2023/07/14/1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/posts/2023/07/14/1/" class="article-date">
+  <time class="dt-published" datetime="2023-07-14T00:00:00.000Z" itemprop="datePublished">2023-07-14</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/posts/2024/02/11/1/">搬移 terraform resource 的方式</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Ubuntu 使用 logrotate 定時移除 log
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>安裝 logrotate</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install logrotate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立 logrotate config, 如 <code>example.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/var/log/app/*.<span class="built_in">log</span> &#123;  <span class="comment"># 針對符合格式的文件操作</span></span><br><span class="line">  daily  <span class="comment"># 每日輪替</span></span><br><span class="line">  rotate 1  <span class="comment"># 保留最近的 1 個文件</span></span><br><span class="line">  missingok  <span class="comment"># 如果文件不存在則忽略</span></span><br><span class="line">  compress  <span class="comment"># 壓縮文件</span></span><br><span class="line">  su root ubuntu  <span class="comment"># 切換為 ubuntu 執行</span></span><br><span class="line">  postrotate  <span class="comment"># 自訂執行 logrotate 後的操作</span></span><br><span class="line">    /path/to/your/script.sh  <span class="comment"># 例如執行某個腳本</span></span><br><span class="line">  endscript</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>將檔案置於 <code>/etc/logrotate.d/</code> 下即會運作</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mv</span> example.conf /etc/logrotate.d/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>也可手動執行確認<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> logrotate -d /etc/logrotate.d/example.conf  <span class="comment"># 使用 debug 模式執行 logrotate</span></span><br><span class="line"><span class="built_in">sudo</span> logrotate -f /etc/logrotate.d/example.conf  <span class="comment"># 直接執行 logrotate</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <!-- <footer class="article-footer"></footer> -->
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/posts/2023/08/06/1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu 列出 process 正在使用的 port
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/2021/08/06/Intro/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">網站介紹</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
-
-
 </section>
         
           <aside id="sidebar">
